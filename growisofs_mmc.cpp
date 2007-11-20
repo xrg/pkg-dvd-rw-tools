@@ -138,7 +138,7 @@ int media_reload (char *name=NULL,struct stat *sb=NULL,unsigned int cap2k=0)
 		cmd[0] = 0x1B;		// START/STOP UNIT
 		cmd[4] = 0x2;		// "Eject"
 		cmd[5] = 0;
-		if (cmd.transport()) return 1;
+		cmd.transport();
 	    }
 #if defined(__sun) || defined(sun)
 	    else if (volmgt_running())
