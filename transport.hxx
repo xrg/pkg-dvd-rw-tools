@@ -1795,9 +1795,12 @@ static int handle_events (Scsi_Command &cmd)
 		break;
 	    case 5: ret |= 1<<5; break;		// Multiple Initiators
 	    case 6:				// Device Busy
-		if ((event[4]&0xF)==1 &&	// Timeout occured
-		    (event[5]&0x3)!=0)
-		{   poll(NULL,0,(descr&0xFFFF)*100+100);
+		if ((event[4]&0xF)==1)		// Timeout occured
+		{
+		    if ((event[5]&0x3)==0)	// No Event
+			return 0;		// Ready to accept any command
+
+		    poll(NULL,0,(descr&0xFFFF)*100+100);
 		    cmd[0] = 0;		// TEST UNIT READY
 		    cmd[5] = 0;
 		    if ((err=cmd.transport()))
