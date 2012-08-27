@@ -22,6 +22,7 @@ pkg:
 		$(DIST)/Makefile.m4		\
 		$(DIST)/dvd+rw-tools.spec	\
 		$(DIST)/growisofs.1		\
+		$(DIST)/dvd+rw-format.1		\
 		$(DIST)/transport.hxx		\
 		$(DIST)/mp.h			\
 		$(DIST)/win32err.h		\

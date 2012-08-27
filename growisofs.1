@@ -117,7 +117,7 @@ recordings.
 Actual device names vary from one operating system to another. We use
 \fI/dev/dvd\fP as a collective name or as symbolic link to the actual
 device if you wish. Under Linux it will most likely be an ide\-scsi
-device  such as "/dev/scd0." Under NetBSD/OpenBSD it has to be a
+device  such as "/dev/sr0." Under NetBSD/OpenBSD it has to be a
 \fIcharacter\fP SCSI CD\-ROM device such as "/dev/rcd0c." Under Solaris
 it also has to be a \fIcharacter\fP SCSI/ATAPI CD\-ROM device, e.g.
 "/dev/rdsk/c0t1d0s2" or "/vol/dev/aliases/cdrom0." And likewise in
@@ -214,11 +214,19 @@ DVD\-RAM or Blu\-ray Disc, as volumes are grown within a single session.
 When growisofs "runs into" blank Blu\-ray Disc media, BD\-RE or BD\-R,
 it gets pre-formatted with minimal spare area size of 256MB.
 
+A DVD\-RW accepts two disc modes: the \fISequential Recording\fP
+and the \fIRestricted Overwrite\fP. If a DVD\-RW medium is in the later one,
+it will behave much like DVD+RW.
+By default DVD\-RW discs are in Sequential Recording mode, but
+can be put into Restricted Overwrite mode using \fBdvd+rw\-format\fP.
+See \fBdvd+rw\-format (1)\fP for more info.
+
 .SH SEE ALSO
 Most up-to-date information on dvd+rw\-tools is available at
 http://fy.chalmers.se/~appro/linux/DVD+RW/.
 .PP
-The manpage for \fBmkisofs\fP.
+.BR mkisofs (1),
+.BR dvd+rw\-format (1)
 
 .SH AUTHORS
 Andy Polyakov <appro@fy.chalmers.se> stands for programming and on-line

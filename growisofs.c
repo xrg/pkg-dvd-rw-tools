@@ -3481,8 +3481,15 @@ int main (int argc, char *argv[])
 	else if (isatty (0)) warn_for_isofs |= 2;
 
 	if (no_tty_check || (warn_for_isofs&2))
-	    fprintf (stderr,"WARNING: %s already carries isofs!\n",in_device),
+	{
+	    fprintf (stderr,"WARNING: %s already carries isofs!\n",in_device);
+		/* we cannot re-write a DVD-RW media in Sequential mode */
+		if ((int)(mmc_profile&0xFFFF) == 0x14)
+			fprintf (stderr,"FATAL: DVD-RW medium is in Sequential mode, you "
+				            "need to blank it before writing again.\n"),
+			exit(FATAL_START(EBUSY));
 	    printf ("About to execute '");
+	}
 	else
 	    fprintf (stderr,"FATAL: %s already carries isofs!\n",in_device),
 	    exit(FATAL_START(EBUSY));

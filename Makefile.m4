@@ -32,6 +32,7 @@ BIN_MODE?=0755
 install:	dvd+rw-tools
 	install -o root -m $(BIN_MODE) $(CHAIN) /usr/bin
 	install -o root -m 0644 growisofs.1 /usr/share/man/man1
+	install -o root -m 0644 dvd+rw-format.1 /usr/share/man/man1
 ])
 
 ifelse(OS,MINGW32,[
@@ -68,6 +69,7 @@ BIN_MODE?=04755
 install:	dvd+rw-tools
 	install -o root -m $(BIN_MODE) $(CHAIN) /usr/local/bin
 	install -o root -m 0644 growisofs.1 /usr/local/man/man1
+	install -o root -m 0644 dvd+rw-format.1 /usr/local/man/man1
 ])
 
 ifelse(OS,SunOS,[
@@ -103,6 +105,7 @@ LDLIBS=-lvolmgt -lrt -lpthread -ldl
 install:	dvd+rw-tools
 	/usr/ucb/install -o root -m 04755 $(CHAIN) /usr/local/bin
 	/usr/ucb/install -o root -m 0644 growisofs.1 /usr/local/man/man1
+	/usr/ucb/install -o root -m 0644 dvd+rw-format.1 /usr/local/man/man1
 ])
 
 ifelse(OS,HP-UX,[
@@ -141,6 +144,7 @@ LDLIBS=-lrt -lpthread
 install:	dvd+rw-tools
 	/usr/sbin/install -o -f /usr/local/bin  $(CHAIN)
 	/usr/sbin/install -o -f /usr/local/man/man1 growisofs.1
+	/usr/sbin/install -o -f /usr/local/man/man1 dvd+rw-format.1
 ])
 
 ifelse(OS,IRIX,[
@@ -178,6 +182,7 @@ BIN_MODE=04755	# set-root-uid
 install:	dvd+rw-tools
 	/sbin/install -u root -m $(BIN_MODE) $(CHAIN) /usr/local/bin
 	/sbin/install -u root -m 0644 growisofs.1 /usr/local/man/man1
+	/sbin/install -u root -m 0644 dvd+rw-format.1 /usr/local/man/man1
 ])
 
 ifelse(OS,Linux,[
@@ -202,6 +207,7 @@ install:	dvd+rw-tools
 	install $(minus_o) -m $(bin_mode) $(CHAIN) $(prefix)/bin
 	[[ -d $(manprefix)/man1 ]] || mkdir -p $(manprefix)/man1
 	install $(minus_o) -m 0644 growisofs.1 $(manprefix)/man1
+	install $(minus_o) -m 0644 dvd+rw-format.1 $(mandir)/man1
 	-[[ -f rpl8 ]] && install $(minus_o) -m $(bin_mode) rpl8 $(prefix)/bin; :
 	-[[ -f btcflash ]] && install $(minus_o) -m $(bin_mode) btcflash $(prefix)/bin; :
 ])
