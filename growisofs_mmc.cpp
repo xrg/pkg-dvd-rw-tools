@@ -758,6 +758,8 @@ static void bd_r_format (Scsi_Command &cmd)
 
     wait_for_unit (cmd);
 
+    bdr_plus_pow = 1;
+
     cmd[0] = 0x35;	// FLUSH CACHE
     cmd[9] = 0;
     cmd.transport();
