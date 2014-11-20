@@ -410,7 +410,9 @@ static unsigned int get_2k_capacity (Scsi_Command &cmd,void *fd=NULL)
 	    }
 
 	    nwa = 0;
-	    if (buf[7]&1 && !bdr_plus_pow)	// NWA_V
+	    //if (buf[7]&1 && !bdr_plus_pow)	// NWA_V
+	    //!bdr_plus_pow patched out for Fedora
+	    if (buf[7]&1)	// NWA_V
 	    {	nwa  = buf[12]<<24;
 		nwa |= buf[13]<<16;
 		nwa |= buf[14]<<8;
