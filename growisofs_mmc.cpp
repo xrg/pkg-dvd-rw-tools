@@ -1640,9 +1640,7 @@ static void plus_r_dl_split (Scsi_Command &cmd,off64_t size)
     blocks += 15, blocks &= ~15;
 
     if (blocks <= split)
-	fprintf (stderr,":-( more than 50%% of space will be *wasted*!\n"
-			"    use single layer media for this recording\n"),
-	exit (FATAL_START(EMEDIUMTYPE));
+	fprintf (stderr,":-? more than 50%% of space will be *wasted*!\n");
 
     blocks /= 16;
     blocks += 1;
