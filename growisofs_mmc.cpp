@@ -540,7 +540,7 @@ ssize_t poor_mans_pwrite64 (int fd,const void *_buff,size_t size,off64_t foff)
 	// own higher HZ value and disrespects the user-land one.
 	// Sending them down as milliseconds is just safer...
 	//
-	if (!(errcode=cmd.transport (WRITE,(void *)buff,size)))
+	if (!(errcode=cmd.transport (WRITE,(void *)buff,nbl*2048)))
 	    break;
 
 	//--- WRITE failed ---//
