@@ -185,9 +185,9 @@ ifelse(OS,Linux,[
 # Linux section
 #
 CC	=gcc
-CFLAGS	+=$(WARN) -O2 -D_REENTRANT
+CFLAGS	+=$(WARN) $(RPM_OPT_FLAGS) -D_REENTRANT
 CXX	=g++
-CXXFLAGS+=$(WARN) -O2 -fno-exceptions -D_REENTRANT
+CXXFLAGS+=$(WARN) $(RPM_OPT_FLAGS) -fno-exceptions -D_REENTRANT
 LDLIBS	=-lpthread
 LINK.o	=$(LINK.cc)
 
