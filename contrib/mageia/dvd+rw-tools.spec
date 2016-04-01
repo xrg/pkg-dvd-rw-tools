@@ -1,32 +1,27 @@
-%define name                    dvd+rw-tools
-%define version			7.1
-%define release                 %mkrel 7
+%define git_repo dvd+rw-tools
+%define git_head HEAD
+
 
 Summary:	Tools for burning on DVD+RW compliant burner
 Group:          Archiving/Cd burning
-Name: 		%{name}
-Version:	%{version}
-Release:        %{release}
+Name:		dvd+rw-tools
+Version:	%git_get_ver
+Release:	%mkrel %git_get_rel2
 License:	GPLv2
-Source0:	http://fy.chalmers.se/~appro/linux/DVD+RW/tools/dvd+rw-tools-%{version}.tar.gz
-Source1:	dvd+rw-mediainfo.1
+Source:		%git_bs_source %{name}-%{version}.tar.gz
+Source1:	%{name}-gitrpm.version
+Source2:	%{name}-changelog.gitrpm.txt
 # (fc) use genisoimage, not mkisofs by default (SUSE)
-Patch0:		growisofs-genisoimage.patch
 # fix build with gcc 4.3
-Patch2:		dvd+rw-tools-limits.h_fix.diff
 # (fc) Allow burn small images on DVD-DL (Fedora bug #476154)
-Patch3:		dvd+rw-tools-7.0-dvddl.patch
 # (fc) fix widechar overflow (Fedora bug #426068)
-Patch4:		dvd+rw-tools-7.0-wctomb.patch
 # (fc) fix exit status of dvd+rw-format (Fedora bug #243036)
-Patch5:		dvd+rw-tools-7.0-wexit.patch
 # (fc) use rpm_opt_flags (SUSE)
-Patch6:		rpm_opt_flags.diff
 URL:		http://fy.chalmers.se/~appro/linux/DVD+RW/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 Requires:	cdrkit-genisoimage
 
-%description 
+%description
 Even though a modified kernel can let you put for example an ext2 file
 system on DVD+RW, it's probably not very practical, because you most
 likely want to access the data on an arbitrary computer. Or in other
@@ -41,13 +36,8 @@ optical media.
 
 %prep
 
+%git_get_source
 %setup -q
-%patch0 -p1 -b .genisoimage
-%patch2 -p1 -b .limits
-%patch3 -p1 -b .dvddl
-%patch4 -p1 -b .wctomb
-%patch5 -p1 -b .wexit
-%patch6 -p1 -b .rpm_opt_flags
 
 %build
 
