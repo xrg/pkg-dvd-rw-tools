@@ -124,7 +124,7 @@ class autofree {
 extern "C" char *plusminus_locale()
 { static class __plusminus {
     private:
-	char str[4];
+	char str[MB_LEN_MAX];
     public:
 	__plusminus()	{   setlocale(LC_CTYPE,ENV_LOCALE);
 			    int l = wctomb(str,(wchar_t)(unsigned char)'±');
