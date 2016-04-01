@@ -443,6 +443,7 @@
 #include <sys/stat.h>
 #include <assert.h>
 #include "mp.h"
+#include <limits.h>
 
 #if defined(__unix) || defined(__unix__)
 # include <unistd.h>

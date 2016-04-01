@@ -16,6 +16,7 @@
 #include <fcntl.h>
 #include <poll.h>
 #include <sys/time.h>
+#include <limits.h>
 
 inline long getmsecs()
 { struct timeval tv;
