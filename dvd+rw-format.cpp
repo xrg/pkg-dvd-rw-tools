@@ -247,7 +247,7 @@ int main (int argc, char *argv[])
 	alarm(1);
 	while ((waitpid(pid,&i,0) != pid) && !WIFEXITED(i)) ;
 	if (WEXITSTATUS(i) == 0) fprintf (stderr,"\n");
-	exit (0);
+	exit (WEXITSTATUS(i));
     }
 #endif
 
