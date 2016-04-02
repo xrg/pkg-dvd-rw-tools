@@ -207,7 +207,7 @@ install:	dvd+rw-tools
 	install $(minus_o) -m $(bin_mode) $(CHAIN) $(prefix)/bin
 	[[ -d $(manprefix)/man1 ]] || mkdir -p $(manprefix)/man1
 	install $(minus_o) -m 0644 growisofs.1 $(manprefix)/man1
-	install $(minus_o) -m 0644 dvd+rw-format.1 $(mandir)/man1
+	install $(minus_o) -m 0644 dvd+rw-format.1 $(manprefix)/man1
 	-[[ -f rpl8 ]] && install $(minus_o) -m $(bin_mode) rpl8 $(prefix)/bin; :
 	-[[ -f btcflash ]] && install $(minus_o) -m $(bin_mode) btcflash $(prefix)/bin; :
 ])
